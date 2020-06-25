@@ -7,4 +7,26 @@ SO now what we have done
 2. mongodb.js is just for practice
 3. mongoose.js will connect with index.js and serve the models
 4. we have used express framework
-
+5. we have  made playground dir in the taskmanager folder in hich we have practiced about the async functionand now 
+    will be integrating that async function in the index.js
+    if you want to visit the previous version go to github and see the commits history
+6. now a new thing we have done is that we have made router folder in which all the router will be present that were
+    in the index.js and from there we will access from the router folder
+7. now here we have made some chnages in user.js model and applied the middleware technique of mongoose and set up
+    our own schema . we have done this to basically  use the pre save feature in which we want to hash the password
+    and also we have done changes in update pathc in user.js router here the previous code was directly connected with db
+    so to tackle itwe have use the JS function atribute and save the user 
+    while saving the user it will go through the model (user.js ) first and if password was changed so it will 
+    easliy hash it
+8. so here we have made a new routr that is for the login purpose and send the users in it 
+     so basically we will be checking with th email and then with password in the user.js router
+     and also a new type of method findbycred in the models user.js where we will verify the useremail and password
+     using hash
+9. now we have to decide that what should be public and privated basically means that what are the request that can user access 
+    before login and after login so we will use the jsonwebtoken framework whihc generate a token for us to athenticate between diffreent request
+    we will genarating new token while logiing in and signing in.
+    these token will allow us to edit our data only and not another and these token are genrated from model user.js where we have made a new 
+    method to genarate token
+    also we have edited the schema of the mongoose basically and add a new onject of name token array which will conatin all the token genarated when login or signin
+    genauthtoken() is the function method made in the mdoel user.js and here we ahave made a new token for the user that was provide
+    in the user.js router call

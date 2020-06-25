@@ -1,39 +1,19 @@
 const express = require('express')
 require('./db/mongoose')
-const User = require('./models/user')
 const Task = require('./models/task')
+const Users = require('./models/user')
 const app = express()
 
 const port = process.env.PORT || 3000
+// setting up router because we want to separate the router so for easy understanding
+const userrouter=require('../src/router/user')
+const taskrouter=require('../src/router/task')
 
 app.use(express.json())
-
-app.post('/users', (req, res) => {
-
-    const user = new User(req.body)
-
-    user.save().then((user) => {
-
-        res.status(201).send(user)
-
-    }).catch((err) => {
-        res.status(400).send(err)
-    })
-})
-app.post('/tasks',(req,res)=>{
-
-    const task=new Task(req.body)
-
-    task.save().then((task)=>{
-
-        res.status(201).send(task)
-
-    }).catch((err)=>{
-        
-        res.status(400).send(err)
-    })
-})
+app.use(userrouter)
+app.use(taskrouter)
 app.listen(port, () => {
 
     console.log('SERVER IS UP')
 })
+
